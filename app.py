@@ -1,3 +1,4 @@
+from collections import Counter
 
 def count_ID(value):
     sum = 0
@@ -7,24 +8,12 @@ def count_ID(value):
     return sum
 
 def func1(n_customers):
-    groups = {}
-    for i in range(n_customers):
-        g_id = count_ID(i)
-        if g_id in groups:
-            groups[g_id] += 1
-        else:
-            groups[g_id] = 1
-    return groups
+    g = map(count_ID, list(range(n_customers)))
+    return dict(Counter(g))
 
 def func2(n_first_id, n_customers):
-    groups = {}
-    for i in range(n_first_id, n_first_id + n_customers):
-        g_id = count_ID(i)
-        if g_id in groups:
-            groups[g_id] += 1
-        else:
-            groups[g_id] = 1
-    return groups
+    g = map(count_ID, list(range(n_first_id, n_first_id + n_customers)))
+    return dict(Counter(g))
 
 if __name__ == '__main__':
     # print(count_ID(123))
